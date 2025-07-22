@@ -11,347 +11,429 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
     <title>GreenLink - Solutions écologiques pour votre maison</title>
-
 </head>
 
 <body>
-    <header>
+    <!-- Header avec navigation sticky -->
+    <header id="header">
         <div class="header-content">
             <div class="logo">
-                <a href="#wrapper" class="decologo">
+                <a href="#accueil" class="logo-link">
                     <img src="img/gl_logo.PNG" alt="Logo GreenLink">
+                    <span class="logo-text">GreenLink</span>
                 </a>
             </div>
-            <nav>
-                <ul class="navbar" id="navbar">
-                    <li><a href="#homepage" class="deco">ACCUEIL</a></li>
-                    <li><a href="#products" class="deco">PRODUITS</a></li>
-                    <li><a href="#contact" class="deco">CONTACT</a></li>
-                    <div class="cart-icon" onclick="openCart()">
-                    <li><button class="cart-toggle" onclick="toggleCart()"><i class="fa-solid fa-cart-shopping"></i> (<span id="cart-count">0</span>)</button>
-</li>
+            
+            <nav class="navbar">
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                    <li><a href="#produits" class="nav-link">Produits</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
-                <button class="menu-toggle" onclick="toggleMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
-
+                
+                <div class="nav-actions">
+                    <button class="cart-btn" id="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                    
+                    <button class="menu-toggle" id="menu-toggle">
+                        <span class="hamburger"></span>
+                        <span class="hamburger"></span>
+                        <span class="hamburger"></span>
+                    </button>
+                </div>
             </nav>
         </div>
     </header>
 
+    <!-- Navigation mobile overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+        <div class="mobile-nav-content">
+            <button class="close-mobile-nav" id="close-mobile-nav">
+                <i class="fas fa-times"></i>
+            </button>
+            <nav class="mobile-nav">
+                <a href="#accueil" class="mobile-nav-link">Accueil</a>
+                <a href="#produits" class="mobile-nav-link">Produits</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+                <div class="mobile-cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    Panier (<span id="mobile-cart-count">0</span>)
+                </div>
+            </nav>
+        </div>
+    </div>
+
     <main>
-        <!-- Homepage Section -->
-        <section id="homepage" class="homepage section active">
-            <div class="homepage-content">
-                <h1>SOLUTIONS ÉCOLOGIQUES POUR VOTRE MAISON</h1>
+        <!-- Section Accueil -->
+        <section id="accueil" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Solutions Écologiques<br>pour Votre Maison</h1>
+                    <p class="hero-subtitle">Découvrez notre gamme complète de produits durables pour un mode de vie respectueux de l'environnement</p>
+                    <div class="hero-actions">
+                        <a href="#produits" class="btn btn-primary">Découvrir nos produits</a>
+                        <a href="#contact" class="btn btn-outline">Nous contacter</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-card">
+                        <i class="fas fa-leaf"></i>
+                        <h3>100% Écologique</h3>
+                        <p>Produits naturels et biodégradables</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter Section -->
+            <div class="newsletter-section">
+                <div class="newsletter-content">
+                    <h3>Restez informé de nos nouveautés</h3>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre adresse email" required>
+                        <button type="submit" class="btn btn-primary">S'inscrire</button>
+                    </form>
+                </div>
             </div>
         </section>
 
-                <!-- Parralax Section -->
-        <section class="sectionParallax">
-            <div class="parallax">
-                <div class="overlay"></div>
-                <div class="parallax-text">
-                    <h2 class="LetsGetStarted">                
-                        Découvrez nos produits durables pour un mode de vie respectueux de l'environnement
-                    </h2>
-                    <p>Inscrivez-vous à notre newsletter</p>
-                    <form class="email-form" action="#" method="POST">
-                    <input type="email" name="email" placeholder="Entrez votre email" required>
-                    <input type="submit" value="S'INSCRIRE A LA NEWSLETTER">
-                </form>                
-            </div>
+        <!-- Section Produits -->
+        <section id="produits" class="products-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nos Produits Écologiques</h2>
+                    <p class="section-subtitle">Transformez votre maison avec nos solutions durables et respectueuses de l'environnement</p>
+                </div>
+
+                <!-- Catégories de produits -->
+                <div class="product-categories">
+                    <div class="category-card active" data-category="all">
+                        <i class="fas fa-th"></i>
+                        <span>Tous</span>
+                    </div>
+                    <div class="category-card" data-category="entretien">
+                        <i class="fas fa-spray-can"></i>
+                        <span>Entretien</span>
+                    </div>
+                    <div class="category-card" data-category="durables">
+                        <i class="fas fa-recycle"></i>
+                        <span>Durables</span>
+                    </div>
+                </div>
+
+                <!-- Grille de produits -->
+                <div class="products-grid" id="products-grid">
+                    
+                    <!-- Produits d'entretien -->
+                    <div class="product-card" data-category="entretien">
+                        <div class="product-image">
+                            <img src="img/ent_savon_de_marseille.jpg" alt="Savon de Marseille">
+                            <div class="product-overlay">
+                                <button class="btn btn-outline product-details-btn" 
+                                        data-name="Savon de Marseille" 
+                                        data-price="5.99" 
+                                        data-image="img/ent_savon_de_marseille.jpg"
+                                        data-category="entretien"
+                                        data-description="Savon naturel multi-usages, fabriqué selon la tradition marseillaise. Idéal pour le ménage et le linge, sans produits chimiques nocifs.">
+                                    Voir détails
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Savon de Marseille</h3>
+                            <p class="product-price">5,99 €</p>
+                            <button class="btn btn-primary add-to-cart-btn" 
+                                    data-name="Savon de Marseille" 
+                                    data-price="5.99" 
+                                    data-image="img/ent_savon_de_marseille.jpg">
+                                Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="entretien">
+                        <div class="product-image">
+                            <img src="img/ent_savon_noir.jpg" alt="Savon noir">
+                            <div class="product-overlay">
+                                <button class="btn btn-outline product-details-btn" 
+                                        data-name="Savon noir" 
+                                        data-price="7.50" 
+                                        data-image="img/ent_savon_noir.jpg"
+                                        data-category="entretien"
+                                        data-description="Nettoyant puissant et écologique pour toutes surfaces. Base d'huile d'olive, dégraisse et nettoie en profondeur naturellement.">
+                                    Voir détails
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Savon noir</h3>
+                            <p class="product-price">7,50 €</p>
+                            <button class="btn btn-primary add-to-cart-btn" 
+                                    data-name="Savon noir" 
+                                    data-price="7.50" 
+                                    data-image="img/ent_savon_noir.jpg">
+                                Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="entretien">
+                        <div class="product-image">
+                            <img src="img/ent_vinaigre_blanc.jpg" alt="Vinaigre Blanc">
+                            <div class="product-overlay">
+                                <button class="btn btn-outline product-details-btn" 
+                                        data-name="Vinaigre Blanc" 
+                                        data-price="3.20" 
+                                        data-image="img/ent_vinaigre_blanc.jpg"
+                                        data-category="entretien"
+                                        data-description="Détartrant et nettoyant naturel. Désinfecte, détartre et fait briller toutes les surfaces. Alternative écologique aux produits chimiques.">
+                                    Voir détails
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Vinaigre Blanc</h3>
+                            <p class="product-price">3,20 €</p>
+                            <button class="btn btn-primary add-to-cart-btn" 
+                                    data-name="Vinaigre Blanc" 
+                                    data-price="3.20" 
+                                    data-image="img/ent_vinaigre_blanc.jpg">
+                                Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Produits durables -->
+                    <div class="product-card" data-category="durables">
+                        <div class="product-image">
+                            <img src="img/dur_sacs_en_vrac.jpg" alt="Sacs en vrac">
+                            <div class="product-overlay">
+                                <button class="btn btn-outline product-details-btn" 
+                                        data-name="Sacs en vrac" 
+                                        data-price="12.00" 
+                                        data-image="img/dur_sacs_en_vrac.jpg"
+                                        data-category="durables"
+                                        data-description="Set de sacs réutilisables en coton bio pour vos courses en vrac. Respirants, lavables et durables. Réduisez vos déchets plastiques.">
+                                    Voir détails
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Sacs en vrac</h3>
+                            <p class="product-price">12,00 €</p>
+                            <button class="btn btn-primary add-to-cart-btn" 
+                                    data-name="Sacs en vrac" 
+                                    data-price="12.00" 
+                                    data-image="img/dur_sacs_en_vrac.jpg">
+                                Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="durables">
+                        <div class="product-image">
+                            <img src="img/dur_brosse_a_bois.jpg" alt="Brosse en bois">
+                            <div class="product-overlay">
+                                <button class="btn btn-outline product-details-btn" 
+                                        data-name="Brosse en bois" 
+                                        data-price="8.90" 
+                                        data-image="img/dur_brosse_a_bois.jpg"
+                                        data-category="durables"
+                                        data-description="Brosse de nettoyage en bois naturel avec poils durables. Ergonomique et résistante, pour un nettoyage écologique efficace.">
+                                    Voir détails
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Brosse en bois</h3>
+                            <p class="product-price">8,90 €</p>
+                            <button class="btn btn-primary add-to-cart-btn" 
+                                    data-name="Brosse en bois" 
+                                    data-price="8.90" 
+                                    data-image="img/dur_brosse_a_bois.jpg">
+                                Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="durables">
+                        <div class="product-image">
+                            <img src="img/dur_toilette_seche.jpg" alt="Toilette sèche">
+                            <div class="product-overlay">
+                                <button class="btn btn-outline product-details-btn" 
+                                        data-name="Toilette sèche" 
+                                        data-price="150.00" 
+                                        data-image="img/dur_toilette_seche.jpg"
+                                        data-category="durables"
+                                        data-description="Solution écologique complète pour réduire drastiquement votre consommation d'eau. Kit complet avec seau, couvercle et accessoires.">
+                                    Voir détails
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Toilette sèche</h3>
+                            <p class="product-price">150,00 €</p>
+                            <button class="btn btn-primary add-to-cart-btn" 
+                                    data-name="Toilette sèche" 
+                                    data-price="150.00" 
+                                    data-image="img/dur_toilette_seche.jpg">
+                                Ajouter au panier
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        
-        <!-- Products Section -->
-        <section id="products" class="products section">
+
+        <!-- Section Contact -->
+        <section id="contact" class="contact-section">
             <div class="container">
-                <div class="section-title">
-                    <h2>Nos Produits</h2>
-                    <p>Découvrez notre gamme complète de solutions écologiques pour transformer votre maison en un
-                        espace plus durable et respectueux de l'environnement.</p>
+                <div class="section-header">
+                    <h2 class="section-title">Contactez-nous</h2>
+                    <p class="section-subtitle">Une question ? Un projet ? Nous sommes là pour vous accompagner dans votre transition écologique</p>
                 </div>
                 
-                <div class="products-grid">
-                    <div class="product-category">
-                        <div class="icon">
-                            <i class="fas fa-spray-can"></i>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Adresse</h3>
+                            <p>123 Rue de la Nature<br>75001 Paris, France</p>
                         </div>
-                        <h3>Produits d'Entretien</h3>
-                        <p>Nettoyants naturels et biodégradables pour toutes les surfaces de votre maison. Sans produits
-                            chimiques nocifs pour votre famille et l'environnement.</p>
-                        
-                            <!-- Section liste Produits d'entretien -->
-                            <section>
-                        <div class="team">
-                        
-                       
-                        <div class="member">
-                        <article>
-                        <figure class="portrait" data-name="Savon de Marseille" data-price="5.99" data-description="Savon naturel multi-usages, idéal pour le ménage et le linge.">
-                            <img src="img/ent_savon_de_marseille.jpg" alt="Savon de Marseille">
-                            <p>Prix: 5,99 €</p>
-                            <button class="add-to-cart">Ajouter au panier</button>
-                            <ul class="reseaux">
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-euro-sign"></i>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <button class="add-to-cart"><i class="fa-solid fa-circle-info"></i></button>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-truck"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <p>Savon de Marseille</p>
-                            <!-- Élément qui contiendra les informations à afficher -->
-    <div id="info" style="display: none;">
-        Ce texte était caché et apparaît maintenant!
-    </div>
-                        </figure>
+                        <div class="contact-card">
+                            <i class="fas fa-phone"></i>
+                            <h3>Téléphone</h3>
+                            <p>+33 1 23 45 67 89</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <p>contact@greenlink.fr</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>Horaires</h3>
+                            <p>Lun - Ven: 9h - 18h<br>Sam: 9h - 16h</p>
+                        </div>
+                    </div>
                     
-                        </article>
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Votre email" required>
+                            </div>
                         </div>
-                        <div class="member">
-                        <article>
-                        <figure class="portrait" data-name="Savon noir" data-price="7.50" data-description="Nettoyant puissant et écologique pour toutes surfaces.">
-                            <img src="img/ent_savon_noir.jpg" alt="Savon noir">
-                            <p>Prix: 7,50 €</p>
-                            <button class="add-to-cart">Ajouter au panier</button>
-                            <ul class="reseaux">
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-euro-sign"></i>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <button class="add-to-cart"><i class="fa-solid fa-circle-info"></i></button>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-truck"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <p>Savon noir</p>
-                        </figure>
-
-                        </article>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="tel" id="telephone" name="telephone" placeholder="Téléphone">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="objet" name="objet" placeholder="Objet" required>
+                            </div>
                         </div>
-                        <div class="member">
-                        <article>
-                        <figure class="portrait" data-name="Vinaigre Blanc" data-price="3.20" data-description="Détartrant et nettoyant naturel pour une maison propre.">
-                            <img src="img/ent_vinaigre_blanc.jpg" alt="Vinaigre Blanc">
-                            <p>Prix: 3,20 €</p>
-                            <button class="add-to-cart">Ajouter au panier</button>
-                            <ul class="reseaux">
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-euro-sign"></i>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <button class="add-to-cart"><i class="fa-solid fa-circle-info"></i></button>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-truck"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <p>Vinaigre Blanc</p>
-                        </figure>
-                      
-                        </article>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Votre message" rows="6" required></textarea>
                         </div>
-                        </div>
-                        </section>
-
-                        </div>
-                        </div>
-
-                        <div class="products-grid">
-                    <div class="product-category">
-                        <div class="icon">
-                            <i class="fas fa-recycle"></i>
-                        </div>
-                        <h3>Produits durables</h3>
-                        <p>Solutions à long terme pour un mode de vie durable. Produits conçus pour durer et minimiser les déchets dans votre foyer.</p>
-                        
-                            <!-- Section liste Produits durables -->
-                            <section>
-                        <div class="team">
-                        
-                       
-                        <div class="member">
-                        <article>
-                        <figure class="portrait" data-name="Sacs en vrac" data-price="12.00" data-description="Sacs réutilisables pour vos courses en vrac.">
-                            <img src="img/dur_sacs_en_vrac.jpg" alt="Sacs en vrac">
-                            <p>Prix: 12,00 €</p>
-                            <button class="add-to-cart">Ajouter au panier</button>
-                            <ul class="reseaux">
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-euro-sign"></i>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <button class="add-to-cart"><i class="fa-solid fa-circle-info"></i></button>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-truck"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <p>Sacs en vrac</p>
-                        </figure>
-                       
-                        </article>
-                        </div>
-                        <div class="member">
-                        <article>
-                        <figure class="portrait" data-name="Brosse en bois" data-price="8.90" data-description="Brosse durable pour le nettoyage écologique.">
-                            <img src="img/dur_brosse_a_bois.jpg" alt="Brosse en bois">
-                            <p>Prix: 8,90 €</p>
-                            <button class="add-to-cart">Ajouter au panier</button>
-                            <ul class="reseaux">
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-euro-sign"></i>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <button class="add-to-cart"><i class="fa-solid fa-circle-info"></i></button>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-truck"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <p>Brosse en bois</p>
-                        </figure>
-                       
-                        </article>
-                        </div>
-                        <div class="member">
-                        <article>
-                        <figure class="portrait" data-name="Toilette sèche" data-price="150.00" data-description="Solution écologique pour réduire la consommation d'eau.">
-                            <img src="img/dur_toilette_seche.jpg" alt="Toilette sèche">
-                            <p>Prix: 150,00 €</p>
-                            <button class="add-to-cart">Ajouter au panier</button>
-                            <ul class="reseaux">
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-euro-sign"></i>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <button class="add-to-cart"><i class="fa-solid fa-circle-info"></i></button>
-                                    </a>
-                                </li>
-                                 <li>
-                                    <a href="#" class="nodeco">
-                                    <i class="fa-solid fa-truck"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <p>Toilette sèche</p>
-                        </figure>
-                        
-                        </article>
-                        </div>
-                        </div>
-                        </section>
-
-                        </div>
-                        </div>
-
-
-
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Contactez-nous</h2>
-                    <p>Vous avez des questions sur nos produits ou souhaitez obtenir plus d'informations ? N'hésitez pas
-                        à nous contacter. Nous sommes là pour répondre à vos besoins.</p>
+                        <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                    </form>
                 </div>
-                <form class="contact-form" action="#" method="POST">
-                    <div class="form-group">
-                        <label for="nom">Votre nom</label>
-                        <input type="text" id="nom" name="nom" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Votre email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="telephone">Téléphone</label>
-                        <input type="tel" id="telephone" name="telephone">
-                    </div>
-                  
-                    <div class="form-group">
-                        <label for="objet">Objet</label>
-                        <input type="text" id="objet" name="objet" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Votre message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">ENVOYER</button>
-                </form>
             </div>
         </section>
-        
-        <!-- Détails produits -->
-
-        
-        
-
     </main>
 
-    <footer>
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="social-links">
-                <a href="#" aria-label="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" aria-label="Twitter">
-                    <i class="fab fa-x-twitter"></i>
-                </a>
-                <a href="#" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="img/gl_logo.PNG" alt="GreenLink">
+                    <p>Solutions écologiques pour un avenir durable</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="copyright">
+            <div class="footer-bottom">
                 <p>&copy; 2025 GreenLink - Koffi HAMENOU. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Modal détails produit -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-product-image" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <div class="modal-category" id="modal-category"></div>
+                    <h2 id="modal-product-name"></h2>
+                    <div class="modal-price" id="modal-product-price"></div>
+                    <p id="modal-product-description"></p>
+                    <div class="modal-actions">
+                        <button class="btn btn-primary" id="modal-add-to-cart">
+                            <i class="fas fa-cart-plus"></i>
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Modal panier -->
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-content cart-modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-shopping-cart"></i> Mon Panier</h2>
+                <button class="modal-close" id="cart-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items" class="cart-items">
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Votre panier est vide</p>
+                    </div>
+                </div>
+                <div class="cart-summary" id="cart-summary" style="display: none;">
+                    <div class="cart-total">
+                        <strong>Total: <span id="cart-total">0,00 €</span></strong>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="btn btn-outline" id="clear-cart">Vider le panier</button>
+                        <button class="btn btn-primary" id="checkout">Commander</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Notification toast -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>
